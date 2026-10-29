@@ -1,0 +1,62 @@
+# ========================================
+# Operating System Files
+# ========================================
+# macOS
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+
+# Windows
+Thumbs.db
+ehthumbs.db
+[Dd]esktop.ini
+
+# Linux
+*~
+
+# ========================================
+# IDEs & Code Editors
+# ========================================
+# VS Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+*.code-workspace
+
+# JetBrains (IntelliJ, WebStorm, PyCharm, etc.)
+.idea/
+*.iml
+*.iws
+
+# Vim / Sublime Text
+*.swp
+*.swo
+*.sublime-workspace
+*.sublime-project
+
+# ========================================
+# Logs & Temporary Files
+# ========================================
+*.log
+logs/
+*.tmp
+*.temp
+tmp/
+temp/
+
+# ========================================
+# Environment & Secrets
+# ========================================
+.env
+*.pem
+*.key
+*.cert
+
+# ========================================
+# Build output
+# ========================================
+dist/

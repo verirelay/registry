@@ -1,0 +1,15 @@
+{
+  "public_key": "A6EHv_POEL4dcN0Y50vAmWfk1jCbpQ1fHdyGZBJVMbg",
+  "canonical": "{\"version\":\"verirelay-build-record/1\",\"repository\":\"https://github.com/verirelay/release\",\"git_commit\":\"bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb\",\"git_tag\":\"release/\\u003ctest\\u003e\\u0026\\u2028end\",\"measurement\":\"aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa\",\"committed_at\":\"2026-08-10T03:30:00Z\"}",
+  "record": {
+    "statement": {
+      "version": "verirelay-build-record/1",
+      "repository": "https://github.com/verirelay/release",
+      "git_commit": "bbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+      "git_tag": "release/<test>&\u2028end",
+      "measurement": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa",
+      "committed_at": "2026-08-10T03:30:00Z"
+    },
+    "signature": "V4yLGAkipqQtJJ8EJn5ABnFNxp4rUXpYvIaeRAbbbI5qBNOm3rW3y8ikr6HgCz_XdoXhry3KF_XUda6vyqHbAQ"
+  }
+}
