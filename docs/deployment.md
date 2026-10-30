@@ -4,8 +4,6 @@ English | [简体中文](deployment.zh-CN.md)
 
 Registry ships as the container image `ghcr.io/verirelay/registry`, run by `docker-compose.yaml`, and as the `dist/verirelay-registry` binary (`make build`). It is backed by PostgreSQL.
 
-Registry creates its tables on startup. There are no migrations to run. It holds no private key.
-
 ## Configuration
 
 Registry reads its configuration from environment variables. `.env.example` is the template, and Compose reads `.env`.

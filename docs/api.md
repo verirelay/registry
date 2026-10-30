@@ -43,13 +43,13 @@ Decoding is strict. At every depth, Registry rejects:
 | `reason` | Revocation only. 1 to 1000 bytes. |
 | `revoked_at` | Revocation only. Required RFC 3339 timestamp in UTC with a `Z` suffix and at most microsecond precision. |
 
-A Build Record's identity is its `repository`, `git_commit`, `git_tag`, and `measurement`. `committed_at` is not part of it, so a tag can have one Build Record per Launch Measurement.
+A Build Record's identity is its `repository`, `git_commit`, `git_tag`, and `measurement`, so a tag has one Build Record per Launch Measurement.
 
 A revocation must name the identity of a stored Build Record. Each Build Record can be revoked once.
 
 ### Canonical input
 
-Registry stores a statement exactly as submitted and never rewrites a value. A value that is not already canonical returns `400 invalid_statement`:
+Registry stores a statement exactly as submitted. A value that is not canonical returns `400 invalid_statement`:
 
 - a string field with leading or trailing Unicode White_Space;
 - uppercase hex in `git_commit` or `measurement`, or an uppercase algorithm prefix;

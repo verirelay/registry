@@ -4,8 +4,6 @@
 
 Registry 以容器镜像 `ghcr.io/verirelay/registry`（由 `docker-compose.yaml` 运行）和 `dist/verirelay-registry` 二进制（`make build`）两种形式提供，数据存放在 PostgreSQL。
 
-Registry 启动时自动建表。没有需要执行的迁移。服务不持有私钥。
-
 ## 配置
 
 配置来自环境变量。模板为 `.env.example`，Compose 读取 `.env`。

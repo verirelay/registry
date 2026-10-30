@@ -43,13 +43,13 @@ Registry 是 VeriRelay 的可选构建身份注册服务：根据**启动度量*
 | `reason` | 仅撤销声明，1 到 1000 字节 |
 | `revoked_at` | 仅撤销声明，必填，UTC（`Z` 后缀）的 RFC 3339 时间，精度最多到微秒 |
 
-构建记录的身份由 `repository`、`git_commit`、`git_tag` 和 `measurement` 组成。身份不含 `committed_at`，因此同一个 tag 的每个启动度量各有一条构建记录。
+构建记录的身份由 `repository`、`git_commit`、`git_tag` 和 `measurement` 组成，因此同一个 tag 的每个启动度量各有一条构建记录。
 
 撤销声明必须指向一条已存储构建记录的身份。每条构建记录只能撤销一次。
 
 ### canonical 输入
 
-Registry 按提交的原样存储 statement，从不改写任何值。不是 canonical 形式的值返回 `400 invalid_statement`：
+Registry 按提交的原样存储 statement。不是 canonical 形式的值返回 `400 invalid_statement`：
 
 - 字符串字段首尾带 Unicode White_Space 字符
 - `git_commit` 或 `measurement` 含大写十六进制字符，或算法前缀为大写
