@@ -135,20 +135,29 @@ jobs:
           IMAGE_REF: ${{ steps.meta.outputs.image }}@${{ steps.build.outputs.digest }}
         run: |
           set -euo pipefail
-          notes="$RUNNER_TEMP/RELEASE_NOTES.md"
-          {
-            echo 'The container image is published to GHCR:'
-            echo
-            echo '```'
-            echo "docker pull ${IMAGE_REF}"
-            echo '```'
-            echo
-            echo 'Verify its signature:'
-            echo
-            echo '```'
-            echo "cosign verify ${IMAGE_REF} \\"
-            echo "  --certificate-identity-regexp '^https://github\\.com/${GITHUB_REPOSITORY}/\\.github/workflows/release\\.yml@' \\"
-            echo '  --certificate-oidc-issuer https://token.actions.githubusercontent.com'
-            echo '```'
-          } > "$notes"
-          gh release create "$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" --notes-file "$notes"
+          # The quoted heredoc keeps Markdown backticks literal; @REPO@, @TAG@ and @IMAGE@ are filled in below.
+          notes="$(cat <<'EOF'
+          Registry maps a Launch Measurement to its build identity, so Verifier can tell which release a CVM runs.
+
+          Deploy it with [Docker Compose](https://github.com/@REPO@/blob/@TAG@/docs/deployment.md). The image:
+
+          ```
+          @IMAGE@
+          ```
+
+          ## Verify
+
+          ```bash
+          cosign verify @IMAGE@ \
+            --certificate-identity-regexp '^https://github\.com/@REPO@/\.github/workflows/release\.yml@' \
+            --certificate-oidc-issuer https://token.actions.githubusercontent.com
+          ```
+          EOF
+          )"
+          notes="${notes//@REPO@/"$GITHUB_REPOSITORY"}"
+          notes="${notes//@TAG@/"$RELEASE_TAG"}"
+          notes="${notes//@IMAGE@/"$IMAGE_REF"}"
+          printf '%s\n' "$notes" > "$RUNNER_TEMP/RELEASE_NOTES.md"
+          # Generated notes append the changelog link after ours.
+          gh release create "$RELEASE_TAG" --verify-tag --title "$RELEASE_TAG" \
+            --notes-file "$RUNNER_TEMP/RELEASE_NOTES.md" --generate-notes
